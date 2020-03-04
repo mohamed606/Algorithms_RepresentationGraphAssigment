@@ -33,9 +33,12 @@ public class Main {
             terminalVertex=input.next();
             Vertex start=graph.findVertex( startVertex);
             Vertex terminal =graph.findVertex(terminalVertex);
-            start.addVertex(terminal);
-            terminal.addVertex(start);
-
+            if(!start.equals(terminal)){
+                start.addVertex(terminal);
+                terminal.addVertex(start);
+            }else {
+                start.addVertex(terminal);
+            }
         }
 //      ArrayList<Vertex>adjacencyList= graph.createAdjacencyList();
 //        for(int i=0;i<adjacencyList.size();i++)
@@ -50,7 +53,7 @@ public class Main {
 //            }
 //            System.out.println();
 //        }
-        printTwoDemnsionalArray(graph.createAdjacencyMatrix(),graphVertices);
+        printTwoDemnsionalArray(graph.createRepresentationMatrix(),graphVertices);
 
     }
     static void printTwoDemnsionalArray(int [][] array , ArrayList<Vertex>vertices){

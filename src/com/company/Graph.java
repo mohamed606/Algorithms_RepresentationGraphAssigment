@@ -22,6 +22,18 @@ public class Graph {
        }
        return adjacencyMatrix;
    }
+   public int [][] createRepresentationMatrix(){
+       int [][] representationMatrix = new int[graphVertices.size()][graphVertices.size()];
+       for(int i=0 ; i<graphVertices.size();i++){
+           Vertex vertex = graphVertices.get(i);
+           ArrayList<Vertex>adjacentVertices = vertex.getAdjacentVertices();
+           ArrayList<Integer>numberOfEdgesBetweenEachVertices = vertex.getNumberOfEdgesWithEachAdjacentVertex();
+           for(int j=0 ; j<adjacentVertices.size();j++){
+               representationMatrix[i][graphVertices.indexOf(adjacentVertices.get(j))]=numberOfEdgesBetweenEachVertices.get(j);
+           }
+       }
+       return representationMatrix;
+   }
    public Vertex findVertex(String vertexName)
     {
         for (Vertex graphVertex : graphVertices) {
