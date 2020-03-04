@@ -37,19 +37,34 @@ public class Main {
             terminal.addVertex(start);
 
         }
-      ArrayList<Vertex>adjacencyList= graph.createAdjacencyList();
-        for(int i=0;i<adjacencyList.size();i++)
-        {
-            Vertex vertex = adjacencyList.get(i);
-            System.out.print(vertex.getVertexName()+" ");
-            ArrayList<Vertex>adjacentVertices = vertex.getAdjacentVertices();
-            for(int j=0 ; j<adjacentVertices.size();j++){
-                
-                System.out.print(adjacentVertices.get(j).getVertexName()+" , ");
+//      ArrayList<Vertex>adjacencyList= graph.createAdjacencyList();
+//        for(int i=0;i<adjacencyList.size();i++)
+//        {
+//            Vertex vertex = adjacencyList.get(i);
+//            System.out.print(vertex.getVertexName()+" ");
+//            ArrayList<Vertex>adjacentVertices = vertex.getAdjacentVertices();
+//            for(int j=0 ; j<adjacentVertices.size();j++){
+//
+//                System.out.print(adjacentVertices.get(j).getVertexName()+" , ");
+//
+//            }
+//            System.out.println();
+//        }
+        printTwoDemnsionalArray(graph.createAdjacencyMatrix(),graphVertices);
 
+    }
+    static void printTwoDemnsionalArray(int [][] array , ArrayList<Vertex>vertices){
+        System.out.print("  ");
+        for(int i=0 ; i<vertices.size();i++){
+            System.out.print(vertices.get(i).getVertexName()+" ");
+        }
+        System.out.println();
+        for(int i=0 ; i<array.length;i++){
+            System.out.print(vertices.get(i).getVertexName()+" ");
+            for(int j=0;j<array[0].length;j++){
+                System.out.print(array[i][j]+" ");
             }
             System.out.println();
         }
-
     }
 }
