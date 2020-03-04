@@ -5,27 +5,30 @@ import java.util.ArrayList;
 public class Vertex {
     private String vertexName;
     private ArrayList<Vertex>adjacentVertices;
-    private int []  numberOfEdgesWithEachAdjacentVertex;
-
-    public Vertex(String vertexName ,int numberOfVertices)
+    private ArrayList<Integer>numberOfEdgesWithEachAdjacentVertex;
+    public Vertex(String vertexName)
     {
         this.vertexName=vertexName;
-        adjacentVertices=new ArrayList<>();
-        numberOfEdgesWithEachAdjacentVertex= new int[numberOfVertices];
     }
-    public int [] getNumberOfEdgesWithEachAdjacentVertex() {
+    public ArrayList<Integer> getNumberOfEdgesWithEachAdjacentVertex() {
         return numberOfEdgesWithEachAdjacentVertex;
     }
 
    void addVertex(Vertex vertex)
    {
+       if(adjacentVertices == null && numberOfEdgesWithEachAdjacentVertex == null){
+           adjacentVertices=new ArrayList<>();
+           numberOfEdgesWithEachAdjacentVertex= new ArrayList<>();
+       }
        int vertexIndex=adjacentVertices.indexOf(vertex);
        if(vertexIndex == -1)
        {
            adjacentVertices.add(vertex);
-           vertexIndex = adjacentVertices.size()-1;
+           numberOfEdgesWithEachAdjacentVertex.add(1);
+       }else {
+           int numberOfEdges = numberOfEdgesWithEachAdjacentVertex.get(vertexIndex)+1;
+           numberOfEdgesWithEachAdjacentVertex.set(vertexIndex,numberOfEdges);
        }
-       numberOfEdgesWithEachAdjacentVertex[vertexIndex]++;
 
    }
 

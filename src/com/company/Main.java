@@ -15,7 +15,7 @@ public class Main {
         ArrayList<Vertex>graphVertices=new ArrayList<>();
         for(int i=0;i<numberOfVetices;i++)
         {
-            graphVertices.add(new Vertex(input.next(),numberOfVetices));
+            graphVertices.add(new Vertex(input.next()));
         }
     Graph graph=new Graph(graphVertices);
 
