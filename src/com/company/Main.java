@@ -38,8 +38,8 @@ public class Main {
             terminalVertex = input.next();
             System.out.println("Enter the name of the edge");
             edgeName = input.next();
-            Vertex start = graph.findVertex(startVertex);
-            Vertex terminal = graph.findVertex(terminalVertex);
+            Vertex start = graphVertices.get(graph.findVertex(startVertex));
+            Vertex terminal = graphVertices.get(graph.findVertex(terminalVertex));
             graphEdges.add(new Edge(edgeName, start, terminal));
             if (!start.equals(terminal)) {
                 start.addVertex(terminal);
@@ -64,9 +64,13 @@ public class Main {
 
 
         }
-        printIncidenceMatrix(graph.createIncidenceMatrix(),graphVertices,graphEdges);
+//        printIncidenceMatrix(graph.createIncidenceMatrix(),graphVertices,graphEdges);
+//        printTwoDemnsionalArray(graph.createDiAdjacencyMatrix(),graphVertices);
+//        printIncidenceMatrix(graph.createDiIncidenceMatrix(),graphVertices,graphEdges);
+        printTwoDemnsionalArray(graph.createDiRepresentationMatrix(),graphVertices);
     }
     static void printTwoDemnsionalArray(int [][] array , ArrayList<Vertex>vertices){
+        System.out.print("  ");
         for(int i=0 ; i<vertices.size();i++){
             System.out.print(vertices.get(i).getVertexName()+" ");
         }
